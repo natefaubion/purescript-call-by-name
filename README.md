@@ -33,7 +33,7 @@ example =
 Both `a` and `b` will be evaluated, which we don't want. The alternative is to
 use a call-by-name approximation:
 
-```puresript
+```purescript
 when :: forall m. Applicative m => Boolean -> (Unit -> m Unit) -> m Unit
 
 example =
