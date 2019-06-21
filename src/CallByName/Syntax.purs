@@ -13,8 +13,6 @@ defer = unsafeCoerce
 deferApply :: forall a b. ((Unit -> a) -> b) -> CBN a -> b
 deferApply = unsafeCoerce
 
-infixl 10 deferApply as \
-
 lazy :: forall a. CBN a -> Lazy a
 lazy = unsafeCoerce Lazy.defer
 

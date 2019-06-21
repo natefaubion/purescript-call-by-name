@@ -5,7 +5,7 @@ import Prelude hiding (unless,when)
 import CallByName.Alt ((<|>))
 import CallByName.Applicative (unless, when)
 import CallByName.Monoid (guard)
-import CallByName.Syntax ((\), (~))
+import CallByName.Syntax ((~))
 import Data.Either (Either(..))
 import Data.Lazy (Lazy, force)
 import Data.Maybe (Maybe(..))
@@ -36,11 +36,11 @@ main = do
     altTest2 =
       Right unit <|> unsafeThrow "Too strict!"
 
-  when false \do
+  when false \_ ->
     unsafeThrow "Too strict!"
 
-  unless true \do
+  unless true \_ ->
     unsafeThrow "Too strict!"
 
-  guard false \do
+  guard false \_ ->
     unsafeThrow "Too strict!"
