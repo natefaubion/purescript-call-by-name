@@ -44,15 +44,15 @@ example =
     this a b
 ```
 
-But wow that's irritating. This library exports an application operator `\`
+But wow that's irritating. This library exports an application operator `\\`
 that makes this look better.
 
 ```purescript
 import CallByName.Applicative (when)
-import CallByName.Syntax ((\))
+import CallByName.Syntax ((\\))
 
 example =
-  when that \do
+  when that \\do
     let
       a = somethingExpensive 42
       b = somethingElseExpensive a
