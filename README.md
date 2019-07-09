@@ -59,7 +59,7 @@ example =
     this a b
 ```
 
-We've saved five arduous characters.
+We've saved four arduous characters.
 
 There's also the `~` operator which lifts terms into `Lazy`.
 
