@@ -1,5 +1,8 @@
 ## purescript-call-by-name
 
+[![Latest release](http://img.shields.io/github/release/natefaubion/purescript-call-by-name.svg)](https://github.com/natefaubion/purescript-call-by-name/releases)
+[![Build status](https://github.com/natefaubion/purescript-call-by-name/workflows/CI/badge.svg?branch=master)](https://github.com/natefaubion/purescript-call-by-name/actions?query=workflow%3ACI+branch%3Amaster)
+
 Syntactically light-weight call-by-name arguments in PureScript. No guarantees.
 Completely gratuitous.
 

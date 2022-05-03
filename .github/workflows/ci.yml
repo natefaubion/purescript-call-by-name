@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: purescript-contrib/setup-purescript@v2.0.0
+        with:
+          purs-tidy: "latest"
+
+      - name: Install and build
+        run: |
+          npx bower install
+          npx pulp build
+          npx pulp test
+
+      - name: Check formatting
+        run: purs-tidy check src test

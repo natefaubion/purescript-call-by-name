@@ -18,10 +18,10 @@ infixr 3 cbnAlt as <|>
 
 instance altMaybe :: Alt Maybe where
   alt a k = case a of
-    Just _  -> a
+    Just _ -> a
     Nothing -> k unit
 
 instance altEither :: Alt (Either e) where
   alt a k = case a of
     Right _ -> a
-    Left  _ -> k unit
+    Left _ -> k unit
