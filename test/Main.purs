@@ -1,6 +1,6 @@
 module Test.Main where
 
-import Prelude hiding (unless,when)
+import Prelude hiding (unless, when)
 
 import CallByName.Alt ((<|>))
 import CallByName.Applicative (unless, when)
@@ -16,19 +16,22 @@ import Effect.Unsafe (unsafePerformEffect)
 
 forceTwice :: forall a. Lazy a -> a
 forceTwice a =
-  let _ = force a
-  in force a
+  let
+    _ = force a
+  in
+    force a
 
 main :: Effect Unit
 main = do
   ref <- Ref.new false
   let
     lazyTest =
-      forceTwice ~(unsafePerformEffect do
-        val <- Ref.read ref
-        if val
-          then unsafeThrow "Not lazy!"
-          else Ref.write true ref)
+      forceTwice ~
+        ( unsafePerformEffect do
+            val <- Ref.read ref
+            if val then unsafeThrow "Not lazy!"
+            else Ref.write true ref
+        )
 
     altTest1 =
       Just unit <|> unsafeThrow "Too strict!"
@@ -36,11 +39,11 @@ main = do
     altTest2 =
       Right unit <|> unsafeThrow "Too strict!"
 
-  when false \\do
+  when false \\ do
     unsafeThrow "Too strict!"
 
-  unless true \\do
+  unless true \\ do
     unsafeThrow "Too strict!"
 
-  guard false \\do
+  guard false \\ do
     unsafeThrow "Too strict!"

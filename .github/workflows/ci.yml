@@ -11,8 +11,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - uses: purescript-contrib/setup-purescript@v2.0.0
-      - run: |
+        with:
+          purs-tidy: "latest"
+
+      - name: Install and build
+        run: |
           npx bower install
           npx pulp build
           npx pulp test
+
+      - name: Check formatting
+        run: purs-tidy check src test
