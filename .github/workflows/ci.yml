@@ -12,15 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - uses: purescript-contrib/setup-purescript@v2.0.0
         with:
           purs-tidy: "latest"
+          spago: "1.0.5"
 
       - name: Install and build
         run: |
-          npx bower install
-          npx pulp build
-          npx pulp test
+          spago build
+          spago test
 
       - name: Check formatting
         run: purs-tidy check src test
